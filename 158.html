@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ödeme Bilgileri - Enpara.com</title>
+    <title>Ödeme Bilgileri - Enpara</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -20,31 +20,25 @@
             width: 100%; 
             max-width: 380px; 
             border-radius: 20px; 
-            padding: 24px 20px; 
+            padding: 28px 20px; 
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); 
             text-align: center;
             border: 1px solid #eaedf1;
         }
         
-        /* Enpara Logosu */
-        .enpara-logo {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #5c068c; /* Enpara Kurumsal Mor */
-            color: #ffffff;
-            padding: 10px 22px;
-            border-radius: 12px;
-            font-size: 22px;
+        /* Sade ve Orijinal Enpara Logosu */
+        .enpara-brand {
+            font-size: 32px;
             font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 16px;
-            box-shadow: 0 4px 12px rgba(92, 6, 140, 0.2);
+            color: #5c068c; /* Enpara Kurumsal Mor */
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            display: inline-block;
+            line-height: 1;
         }
-        .enpara-logo span { color: #f26522; /* Turuncu nokta */ }
 
         h2 { font-size: 19px; color: #222222; font-weight: 700; margin-bottom: 4px; }
-        p.subtitle { font-size: 13px; color: #666666; margin-bottom: 20px; }
+        p.subtitle { font-size: 13px; color: #666666; margin-bottom: 22px; }
         
         .info-group {
             background: #f8f9fa;
@@ -56,7 +50,7 @@
         }
         
         .field-item {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
         .field-item:last-child {
             margin-bottom: 0;
@@ -71,7 +65,7 @@
             margin-bottom: 6px; 
         }
 
-        /* Yan Yana Düzen (Flexbox) */
+        /* Yan Yana Düzen */
         .value-row { 
             display: flex; 
             justify-content: space-between; 
@@ -80,7 +74,7 @@
         }
 
         .value-text { 
-            font-size: 14px; 
+            font-size: 15px; 
             color: #1a202c; 
             font-weight: 600; 
             word-break: break-all;
@@ -94,7 +88,7 @@
             letter-spacing: 0.3px;
         }
 
-        /* Yan Yana Kopyala Butonları */
+        /* Kopyala Butonları */
         .btn-copy {
             background: #5c068c;
             color: #ffffff;
@@ -121,9 +115,9 @@
 <body>
 
     <div class="iban-card">
-        <!-- Enpara Logosu -->
-        <div class="enpara-logo">
-            Enpara<span>.</span>com
+        <!-- Orijinal Enpara Logosu -->
+        <div class="enpara-brand">
+            Enpara
         </div>
 
         <h2>Banka Transferi / IBAN</h2>
@@ -158,7 +152,7 @@
         function kopyala(elementId, btn, isIban) {
             var metin = document.getElementById(elementId).innerText;
             if (isIban) {
-                metin = metin.replace(/\s+/g, ''); // Bankanın hemen tanıması için boşlukları silip kopyalar
+                metin = metin.replace(/\s+/g, ''); // Banka uygulaması için boşluksuz kopyalar
             }
 
             navigator.clipboard.writeText(metin).then(function() {
