@@ -3,135 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBAN / Ödeme Bilgileri</title>
+    <title>Ödeme Bilgileri - Enpara.com</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: #f0f2f5; 
+            background: #f4f5f7; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             min-height: 100vh; 
-            padding: 20px;
+            padding: 16px;
         }
         .iban-card { 
             background: #ffffff; 
             width: 100%; 
             max-width: 380px; 
-            border-radius: 24px; 
-            padding: 28px 24px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+            border-radius: 20px; 
+            padding: 24px 20px; 
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); 
             text-align: center;
+            border: 1px solid #eaedf1;
         }
-        .bank-icon {
-            width: 56px;
-            height: 56px;
-            background: #e7f0ff;
-            color: #0d6efd;
-            border-radius: 50%;
-            display: flex;
+        
+        /* Enpara Logosu */
+        .enpara-logo {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
+            background-color: #5c068c; /* Enpara Kurumsal Mor */
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(92, 6, 140, 0.2);
         }
-        .bank-icon svg { width: 28px; height: 28px; fill: currentColor; }
-        h2 { font-size: 20px; color: #1a1a1a; font-weight: 700; margin-bottom: 6px; }
-        p.subtitle { font-size: 13px; color: #6c757d; margin-bottom: 24px; }
+        .enpara-logo span { color: #f26522; /* Turuncu nokta */ }
+
+        h2 { font-size: 19px; color: #222222; font-weight: 700; margin-bottom: 4px; }
+        p.subtitle { font-size: 13px; color: #666666; margin-bottom: 20px; }
         
         .info-group {
             background: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 16px;
             padding: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             text-align: left;
         }
-        .label { font-size: 11px; text-transform: uppercase; color: #8d99ae; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; }
-        .value { font-size: 15px; color: #2b2d42; font-weight: 600; margin-bottom: 14px; word-break: break-all; display: flex; justify-content: space-between; align-items: center; }
-        .iban-value { font-size: 16px; font-family: monospace; letter-spacing: 0.5px; color: #0d6efd; margin-bottom: 0; }
+        
+        .field-item {
+            margin-bottom: 16px;
+        }
+        .field-item:last-child {
+            margin-bottom: 0;
+        }
 
-        .btn-main {
-            width: 100%;
-            background: #0d6efd;
+        .label { 
+            font-size: 11px; 
+            text-transform: uppercase; 
+            color: #718096; 
+            font-weight: 700; 
+            letter-spacing: 0.5px; 
+            margin-bottom: 6px; 
+        }
+
+        /* Yan Yana Düzen (Flexbox) */
+        .value-row { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            gap: 10px; 
+        }
+
+        .value-text { 
+            font-size: 14px; 
+            color: #1a202c; 
+            font-weight: 600; 
+            word-break: break-all;
+        }
+
+        .iban-text {
+            font-size: 13px;
+            font-family: monospace;
+            color: #5c068c;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+
+        /* Yan Yana Kopyala Butonları */
+        .btn-copy {
+            background: #5c068c;
             color: #ffffff;
             border: none;
-            border-radius: 14px;
-            padding: 16px;
-            font-size: 16px;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 12px;
             font-weight: 700;
             cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
             transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25);
+            box-shadow: 0 2px 6px rgba(92, 6, 140, 0.15);
         }
-        .btn-main:active { transform: scale(0.98); }
-        .btn-main.copied { background: #198754; box-shadow: 0 4px 12px rgba(25, 135, 84, 0.25); }
+        .btn-copy:active { transform: scale(0.95); }
+        .btn-copy.copied { 
+            background: #28a745; 
+            box-shadow: 0 2px 6px rgba(40, 167, 69, 0.2); 
+        }
 
-        .mini-copy {
-            background: #e7f0ff;
-            color: #0d6efd;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .footer-note { font-size: 12px; color: #adb5bd; margin-top: 16px; }
+        .footer-note { font-size: 12px; color: #a0aec0; margin-top: 14px; }
     </style>
 </head>
 <body>
 
     <div class="iban-card">
-        <div class="bank-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 10h16v2H4zm2 4h3v4H6zm5 0h3v4h-3zm5 0h3v4h-3zM2 6l10-4 10 4v2H2z"/></svg>
+        <!-- Enpara Logosu -->
+        <div class="enpara-logo">
+            Enpara<span>.</span>com
         </div>
+
         <h2>Banka Transferi / IBAN</h2>
-        <p class="subtitle">Lütfen ödeme yaparken alıcı adına dikkat ediniz.</p>
+        <p class="subtitle">Ödeme yapmak için bilgileri kopyalayabilirsiniz.</p>
 
         <div class="info-group">
-            <div class="label">Alıcı Adı / Unvan</div>
-            <div class="value">
-                <span id="aliciAdi">Kaan Turgut</span>
-                <button class="mini-copy" onclick="kopyalaMetin('aliciAdi', this)">Kopyala</button>
+            <!-- ALICI ADI ALANI -->
+            <div class="field-item">
+                <div class="label">Alıcı Adı / Unvan</div>
+                <div class="value-row">
+                    <span class="value-text" id="aliciAdi">Kaan Turgut</span>
+                    <button class="btn-copy" onclick="kopyala('aliciAdi', this, false)">Kopyala</button>
+                </div>
             </div>
 
-            <div class="label">IBAN Numarası</div>
-            <div class="value iban-value" id="ibanNo">TR12 0015 7000 0000 0139 9940 85</div>
+            <hr style="border: none; border-top: 1px solid #edf2f7; margin: 12px 0;">
+
+            <!-- IBAN ALANI -->
+            <div class="field-item">
+                <div class="label">IBAN Numarası</div>
+                <div class="value-row">
+                    <span class="value-text iban-text" id="ibanNo">TR12 0015 7000 0000 0139 9940 85</span>
+                    <button class="btn-copy" onclick="kopyala('ibanNo', this, true)">Kopyala</button>
+                </div>
+            </div>
         </div>
 
-        <button class="btn-main" id="mainBtn" onclick="kopyalaIban()">
-            <span>IBAN'ı Kopyala</span>
-        </button>
-
-        <div class="footer-note">Kopyaladıktan sonra banka uygulamanıza yapıştırabilirsiniz.</div>
+        <div class="footer-note">Güvenli şekilde ödemenizi gerçekleştirebilirsiniz.</div>
     </div>
 
     <script>
-        function kopyalaIban() {
-            var iban = document.getElementById("ibanNo").innerText.replace(/\s+/g, '');
-            var btn = document.getElementById("mainBtn");
+        function kopyala(elementId, btn, isIban) {
+            var metin = document.getElementById(elementId).innerText;
+            if (isIban) {
+                metin = metin.replace(/\s+/g, ''); // Bankanın hemen tanıması için boşlukları silip kopyalar
+            }
 
-            navigator.clipboard.writeText(iban).then(function() {
-                btn.classList.add("copied");
-                btn.innerHTML = "✓ IBAN Hafızaya Alındı!";
-                setTimeout(function() {
-                    btn.classList.remove("copied");
-                    btn.innerHTML = "<span>IBAN'ı Kopyala</span>";
-                }, 2500);
-            });
-        }
-
-        function kopyalaMetin(id, btn) {
-            var metin = document.getElementById(id).innerText;
             navigator.clipboard.writeText(metin).then(function() {
-                var eskiText = btn.innerText;
-                btn.innerText = "Kopyalandı!";
-                setTimeout(function() { btn.innerText = eskiText; }, 2000);
+                var eskiMetin = btn.innerText;
+                btn.innerText = "✓ Alındı";
+                btn.classList.add("copied");
+
+                setTimeout(function() { 
+                    btn.innerText = eskiMetin; 
+                    btn.classList.remove("copied");
+                }, 2000);
             });
         }
     </script>
