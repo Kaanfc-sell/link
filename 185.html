@@ -1,1 +1,161 @@
-﻿<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=https://wa.me/905425242477?text=Merhaba"></head></html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enpara Ödeme / IBAN Bilgisi</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #f4f5f7; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .iban-card {
+            background: linear-gradient(135deg, #49176e 0%, #2e0d47 100%);
+            color: #ffffff;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 12px 28px rgba(73, 23, 110, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Enpara Şık Arka Plan Süsü */
+        .iban-card::after {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
+
+        .bank-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .bank-logo {
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .bank-tag {
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .label {
+            font-size: 11px;
+            color: #c0a8d8;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+        }
+
+        .holder-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .iban-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .iban-number {
+            font-family: monospace, sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        .btn-copy {
+            width: 100%;
+            background: #ffffff;
+            color: #49176e;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.98);
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="iban-card">
+        <div class="bank-header">
+            <div class="bank-logo">Enpara.com</div>
+            <div class="bank-tag">Banka Hesabı</div>
+        </div>
+
+        <div class="label">Hesap Sahibi</div>
+        <div class="holder-name">Mine Çetinkayalı</div>
+
+        <div class="label">IBAN Numarası</div>
+        <div class="iban-box">
+            <div class="iban-number" id="ibanCode">TR98 0015 7000 0000 0123 3799 29</div>
+        </div>
+
+        <button class="btn-copy" id="copyBtn" onclick="copyIban()">
+            📋 IBAN'ı Kopyala
+        </button>
+    </div>
+
+    <script>
+        function copyIban() {
+            const ibanText = "TR980015700000000123379929"; // Boşluksuz kopyalaması için
+            navigator.clipboard.writeText(ibanText).then(() => {
+                const btn = document.getElementById("copyBtn");
+                btn.innerHTML = "✔ IBAN Kopyalandı!";
+                btn.style.background = "#22c55e";
+                btn.style.color = "#ffffff";
+                
+                setTimeout(() => {
+                    btn.innerHTML = "📋 IBAN'ı Kopyala";
+                    btn.style.background = "#ffffff";
+                    btn.style.color = "#49176e";
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
+</html>
