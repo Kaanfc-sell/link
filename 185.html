@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enpara Ödeme / IBAN Bilgisi</title>
+    <title>Mine Çetinkayalı - Ödeme & IBAN Bilgisi</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -23,17 +23,18 @@
             max-width: 380px;
             border-radius: 20px;
             padding: 24px 20px;
-            box-shadow: 0 12px 28px rgba(73, 23, 110, 0.3);
+            box-shadow: 0 12px 28px rgba(73, 23, 110, 0.35);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* Enpara Arka Plan Süsü */
         .iban-card::after {
             content: "";
             position: absolute;
-            top: -50px;
-            right: -50px;
+            top: -40px;
+            right: -40px;
             width: 150px;
             height: 150px;
             background: rgba(255, 255, 255, 0.06);
@@ -44,7 +45,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .bank-logo {
@@ -60,6 +61,7 @@
             padding: 4px 10px;
             border-radius: 12px;
             font-weight: 600;
+            color: #e2d4f0;
         }
 
         .label {
@@ -95,7 +97,7 @@
             text-align: center;
         }
 
-        /* Buton Grubu */
+        /* Çift Buton Alanı */
         .actions {
             display: flex;
             flex-direction: column;
@@ -105,7 +107,7 @@
         .btn {
             width: 100%;
             border: none;
-            padding: 12px;
+            padding: 13px;
             border-radius: 12px;
             font-size: 13px;
             font-weight: 800;
@@ -131,6 +133,13 @@
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 16px;
+        }
     </style>
 </head>
 <body>
@@ -149,7 +158,7 @@
             <div class="iban-number">TR98 0015 7000 0000 0123 3799 29</div>
         </div>
 
-        <!-- Çift Buton Alanı -->
+        <!-- Butonlar -->
         <div class="actions">
             <button class="btn btn-iban" id="copyIbanBtn" onclick="copyIban()">
                 📋 IBAN'ı Kopyala
@@ -158,10 +167,11 @@
                 👤 İsmi Kopyala
             </button>
         </div>
+
+        <div class="footer-note">Ödeme sonrası dekont iletmeyi unutmayınız.</div>
     </div>
 
     <script>
-        // IBAN Kopyalama Fonksiyonu
         function copyIban() {
             const ibanText = "TR980015700000000123379929";
             navigator.clipboard.writeText(ibanText).then(() => {
@@ -178,7 +188,6 @@
             });
         }
 
-        // İsim Kopyalama Fonksiyonu
         function copyName() {
             const nameText = "Mine Çetinkayalı";
             navigator.clipboard.writeText(nameText).then(() => {
