@@ -28,7 +28,7 @@
             overflow: hidden;
         }
 
-        /* Enpara Şık Arka Plan Süsü */
+        /* Enpara Arka Plan Süsü */
         .iban-card::after {
             content: "";
             position: absolute;
@@ -44,7 +44,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .bank-logo {
@@ -73,7 +73,7 @@
         .holder-name {
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             letter-spacing: 0.3px;
         }
 
@@ -82,7 +82,7 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 12px;
             border-radius: 12px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .iban-number {
@@ -95,14 +95,19 @@
             text-align: center;
         }
 
-        .btn-copy {
+        /* Buton Grubu */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
             width: 100%;
-            background: #ffffff;
-            color: #49176e;
             border: none;
-            padding: 14px;
+            padding: 12px;
             border-radius: 12px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -112,9 +117,19 @@
             gap: 8px;
         }
 
-        .btn-copy:active {
+        .btn:active {
             transform: scale(0.98);
-            background: #f0f0f0;
+        }
+
+        .btn-iban {
+            background: #ffffff;
+            color: #49176e;
+        }
+
+        .btn-name {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -127,23 +142,30 @@
         </div>
 
         <div class="label">Hesap Sahibi</div>
-        <div class="holder-name">Mine Çetinkayalı</div>
+        <div class="holder-name" id="holderName">Mine Çetinkayalı</div>
 
         <div class="label">IBAN Numarası</div>
         <div class="iban-box">
-            <div class="iban-number" id="ibanCode">TR98 0015 7000 0000 0123 3799 29</div>
+            <div class="iban-number">TR98 0015 7000 0000 0123 3799 29</div>
         </div>
 
-        <button class="btn-copy" id="copyBtn" onclick="copyIban()">
-            📋 IBAN'ı Kopyala
-        </button>
+        <!-- Çift Buton Alanı -->
+        <div class="actions">
+            <button class="btn btn-iban" id="copyIbanBtn" onclick="copyIban()">
+                📋 IBAN'ı Kopyala
+            </button>
+            <button class="btn btn-name" id="copyNameBtn" onclick="copyName()">
+                👤 İsmi Kopyala
+            </button>
+        </div>
     </div>
 
     <script>
+        // IBAN Kopyalama Fonksiyonu
         function copyIban() {
-            const ibanText = "TR980015700000000123379929"; // Boşluksuz kopyalaması için
+            const ibanText = "TR980015700000000123379929";
             navigator.clipboard.writeText(ibanText).then(() => {
-                const btn = document.getElementById("copyBtn");
+                const btn = document.getElementById("copyIbanBtn");
                 btn.innerHTML = "✔ IBAN Kopyalandı!";
                 btn.style.background = "#22c55e";
                 btn.style.color = "#ffffff";
@@ -152,6 +174,23 @@
                     btn.innerHTML = "📋 IBAN'ı Kopyala";
                     btn.style.background = "#ffffff";
                     btn.style.color = "#49176e";
+                }, 2000);
+            });
+        }
+
+        // İsim Kopyalama Fonksiyonu
+        function copyName() {
+            const nameText = "Mine Çetinkayalı";
+            navigator.clipboard.writeText(nameText).then(() => {
+                const btn = document.getElementById("copyNameBtn");
+                btn.innerHTML = "✔ İsim Kopyalandı!";
+                btn.style.background = "#22c55e";
+                btn.style.borderColor = "#22c55e";
+                
+                setTimeout(() => {
+                    btn.innerHTML = "👤 İsmi Kopyala";
+                    btn.style.background = "rgba(255, 255, 255, 0.15)";
+                    btn.style.borderColor = "rgba(255, 255, 255, 0.2)";
                 }, 2000);
             });
         }
