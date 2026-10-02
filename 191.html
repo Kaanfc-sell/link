@@ -1,1 +1,524 @@
-﻿<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=https://wa.me/905425242477?text=Merhaba"></head></html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Enpara - IBAN Bilgisi</title>
+
+    <meta name="theme-color" content="#6b217e">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                         Roboto, Helvetica, Arial, sans-serif;
+
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                radial-gradient(circle at top left, #f3e8f8 0%, transparent 35%),
+                radial-gradient(circle at bottom right, #ece4f4 0%, transparent 40%),
+                #f5f5f7;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 410px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #761d82 0%,
+                    #5f176e 45%,
+                    #391044 100%
+                );
+
+            color: white;
+
+            border-radius: 26px;
+
+            padding: 26px;
+
+            position: relative;
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 60px rgba(75, 20, 89, 0.25),
+                0 8px 20px rgba(0, 0, 0, 0.10);
+
+            border: 1px solid rgba(255,255,255,0.14);
+        }
+
+        /* Arka plan dekorasyonları */
+
+        .card::before {
+            content: "";
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.045);
+
+            top: -110px;
+            right: -100px;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+
+            width: 170px;
+            height: 170px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.035);
+
+            bottom: -90px;
+            left: -70px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 30px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .logo {
+            width: 43px;
+            height: 43px;
+
+            border-radius: 13px;
+
+            background: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #6c1b79;
+
+            font-size: 25px;
+            font-weight: 900;
+
+            box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+        }
+
+        .brand-text {
+            font-size: 23px;
+            font-weight: 800;
+
+            letter-spacing: -0.7px;
+        }
+
+        .account-type {
+            font-size: 11px;
+            font-weight: 700;
+
+            padding: 7px 11px;
+
+            border-radius: 100px;
+
+            background: rgba(255,255,255,0.12);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            color: rgba(255,255,255,0.88);
+        }
+
+        /* Hesap bilgileri */
+
+        .info-section {
+            margin-bottom: 18px;
+        }
+
+        .label {
+            font-size: 10px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.3px;
+
+            color: rgba(255,255,255,0.58);
+
+            margin-bottom: 6px;
+        }
+
+        .holder-name {
+            font-size: 19px;
+
+            font-weight: 750;
+
+            letter-spacing: -0.2px;
+        }
+
+        /* IBAN */
+
+        .iban-container {
+            margin-top: 23px;
+            margin-bottom: 22px;
+        }
+
+        .iban-box {
+            margin-top: 7px;
+
+            background: rgba(0,0,0,0.18);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            border-radius: 16px;
+
+            padding: 17px 14px;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .iban-number {
+            text-align: center;
+
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono",
+                         monospace;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            line-height: 1.7;
+
+            letter-spacing: 0.8px;
+
+            word-break: break-word;
+        }
+
+        /* Butonlar */
+
+        .actions {
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        button {
+            width: 100%;
+
+            border: none;
+
+            border-radius: 14px;
+
+            padding: 14px 15px;
+
+            font-size: 14px;
+
+            font-weight: 750;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            transition:
+                transform 0.15s ease,
+                opacity 0.15s ease,
+                background 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: scale(0.985);
+        }
+
+        .copy-iban {
+            background: #ffffff;
+
+            color: #681b77;
+
+            box-shadow: 0 7px 17px rgba(0,0,0,0.13);
+        }
+
+        .copy-name {
+            background: rgba(255,255,255,0.10);
+
+            color: white;
+
+            border: 1px solid rgba(255,255,255,0.17);
+        }
+
+        .success {
+            background: #16a34a !important;
+            color: white !important;
+            border-color: #16a34a !important;
+        }
+
+        /* Alt açıklama */
+
+        .footer {
+            text-align: center;
+
+            margin-top: 18px;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+
+            color: rgba(255,255,255,0.42);
+        }
+
+        @media (max-width: 420px) {
+
+            .card {
+                padding: 23px 19px;
+
+                border-radius: 22px;
+            }
+
+            .brand-text {
+                font-size: 21px;
+            }
+
+            .iban-number {
+                font-size: 14px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="content">
+
+            <!-- HEADER -->
+
+            <div class="header">
+
+                <div class="brand">
+
+                    <div class="logo">
+                        En
+                    </div>
+
+                    <div class="brand-text">
+                        para
+                    </div>
+
+                </div>
+
+                <div class="account-type">
+                    Vadesiz TL
+                </div>
+
+            </div>
+
+
+            <!-- HESAP SAHİBİ -->
+
+            <div class="info-section">
+
+                <div class="label">
+                    Hesap Sahibi
+                </div>
+
+                <div
+                    class="holder-name"
+                    id="holderName"
+                >
+                    Mine Çetinkayalı
+                </div>
+
+            </div>
+
+
+            <!-- IBAN -->
+
+            <div class="iban-container">
+
+                <div class="label">
+                    IBAN Numarası
+                </div>
+
+                <div class="iban-box">
+
+                    <div
+                        class="iban-number"
+                        id="ibanNumber"
+                    >
+                        TR98 0015 7000 0000 0123 3799 29
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTONLAR -->
+
+            <div class="actions">
+
+                <button
+                    class="copy-iban"
+                    id="copyIbanBtn"
+                    onclick="copyIban()"
+                >
+                    📋 IBAN'ı Kopyala
+                </button>
+
+
+                <button
+                    class="copy-name"
+                    id="copyNameBtn"
+                    onclick="copyName()"
+                >
+                    👤 İsmi Kopyala
+                </button>
+
+            </div>
+
+
+            <div class="footer">
+                Ödeme yapmadan önce alıcı bilgilerini kontrol ediniz.
+            </div>
+
+        </div>
+
+    </div>
+
+
+<script>
+
+    const iban =
+        "TR980015700000000123379929";
+
+    const accountName =
+        "Mine Çetinkayalı";
+
+
+    async function copyText(text) {
+
+        try {
+
+            await navigator.clipboard.writeText(text);
+
+            return true;
+
+        }
+
+        catch (err) {
+
+            /* Eski tarayıcılar için yedek yöntem */
+
+            const textarea =
+                document.createElement("textarea");
+
+            textarea.value = text;
+
+            textarea.style.position = "fixed";
+            textarea.style.opacity = "0";
+
+            document.body.appendChild(textarea);
+
+            textarea.select();
+
+            document.execCommand("copy");
+
+            document.body.removeChild(textarea);
+
+            return true;
+        }
+
+    }
+
+
+    async function copyIban() {
+
+        const button =
+            document.getElementById("copyIbanBtn");
+
+        await copyText(iban);
+
+        button.innerHTML =
+            "✓ IBAN Kopyalandı";
+
+        button.classList.add("success");
+
+
+        setTimeout(() => {
+
+            button.innerHTML =
+                "📋 IBAN'ı Kopyala";
+
+            button.classList.remove("success");
+
+        }, 1800);
+
+    }
+
+
+    async function copyName() {
+
+        const button =
+            document.getElementById("copyNameBtn");
+
+        await copyText(accountName);
+
+        button.innerHTML =
+            "✓ İsim Kopyalandı";
+
+        button.classList.add("success");
+
+
+        setTimeout(() => {
+
+            button.innerHTML =
+                "👤 İsmi Kopyala";
+
+            button.classList.remove("success");
+
+        }, 1800);
+
+    }
+
+</script>
+
+</body>
+</html>
