@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akgül Şarküteri Gıda - Garanti BBVA Ödeme / IBAN Bilgisi</title>
+    <title>Niki Aydın - Garanti BBVA Ödeme / IBAN Bilgisi</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -147,15 +147,15 @@
     <div class="iban-card">
         <div class="bank-header">
             <div class="bank-logo">Garanti BBVA</div>
-            <div class="bank-tag">Ticari / Vadesiz</div>
+            <div class="bank-tag">Vadesiz Hesap</div>
         </div>
 
-        <div class="label">Hesap Sahibi / Unvan</div>
-        <div class="holder-name" id="holderName">Akgül Şarküteri Gıda</div>
+        <div class="label">Hesap Sahibi</div>
+        <div class="holder-name" id="holderName">Niki Aydın</div>
 
         <div class="label">IBAN Numarası</div>
         <div class="iban-box">
-            <div class="iban-number">TR07 0006 2001 6380 0006 2995 39</div>
+            <div class="iban-number">TR38 0006 2001 6380 0006 2982 05</div>
         </div>
 
         <!-- Kopyalama Butonları -->
@@ -173,7 +173,7 @@
 
     <script>
         function copyIban() {
-            const ibanText = "TR070006200163800006299539"; // Boşluksuz tam IBAN
+            const ibanText = "TR380006200163800006298205"; // Boşluksuz tam IBAN
             navigator.clipboard.writeText(ibanText).then(() => {
                 const btn = document.getElementById("copyIbanBtn");
                 btn.innerHTML = "✔ IBAN Kopyalandı!";
@@ -189,7 +189,7 @@
         }
 
         function copyName() {
-            const nameText = "Akgül Şarküteri Gıda";
+            const nameText = "Niki Aydın";
             navigator.clipboard.writeText(nameText).then(() => {
                 const btn = document.getElementById("copyNameBtn");
                 btn.innerHTML = "✔ İsim Kopyalandı!";
