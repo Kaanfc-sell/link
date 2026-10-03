@@ -1,6 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <meta http-equiv="refresh" content="0; url=https://wa.me/905425242477?text=Merhaba">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akgül Şarküteri Gıda - Garanti BBVA Ödeme / IBAN Bilgisi</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #f4f5f7; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .iban-card {
+            background: linear-gradient(135deg, #005A36 0%, #002B18 100%);
+            color: #ffffff;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 12px 28px rgba(0, 90, 54, 0.35);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Garanti BBVA Arka Plan Süsü */
+        .iban-card::after {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
+
+        .bank-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .bank-logo {
+            font-size: 19px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .bank-tag {
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #d1fae5;
+        }
+
+        .label {
+            font-size: 11px;
+            color: #a7f3d0;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+        }
+
+        .holder-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 0.3px;
+        }
+
+        .iban-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .iban-number {
+            font-family: monospace, sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        /* Çift Buton Alanı */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            border: none;
+            padding: 13px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-iban {
+            background: #ffffff;
+            color: #005A36;
+        }
+
+        .btn-name {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 16px;
+        }
+    </style>
 </head>
+<body>
+
+    <div class="iban-card">
+        <div class="bank-header">
+            <div class="bank-logo">Garanti BBVA</div>
+            <div class="bank-tag">Ticari / Vadesiz</div>
+        </div>
+
+        <div class="label">Hesap Sahibi / Unvan</div>
+        <div class="holder-name" id="holderName">Akgül Şarküteri Gıda</div>
+
+        <div class="label">IBAN Numarası</div>
+        <div class="iban-box">
+            <div class="iban-number">TR07 0006 2001 6380 0006 2995 39</div>
+        </div>
+
+        <!-- Kopyalama Butonları -->
+        <div class="actions">
+            <button class="btn btn-iban" id="copyIbanBtn" onclick="copyIban()">
+                📋 IBAN'ı Kopyala
+            </button>
+            <button class="btn btn-name" id="copyNameBtn" onclick="copyName()">
+                👤 İsmi Kopyala
+            </button>
+        </div>
+
+        <div class="footer-note">Ödeme sonrası dekont iletmeyi unutmayınız.</div>
+    </div>
+
+    <script>
+        function copyIban() {
+            const ibanText = "TR070006200163800006299539"; // Boşluksuz tam IBAN
+            navigator.clipboard.writeText(ibanText).then(() => {
+                const btn = document.getElementById("copyIbanBtn");
+                btn.innerHTML = "✔ IBAN Kopyalandı!";
+                btn.style.background = "#22c55e";
+                btn.style.color = "#ffffff";
+                
+                setTimeout(() => {
+                    btn.innerHTML = "📋 IBAN'ı Kopyala";
+                    btn.style.background = "#ffffff";
+                    btn.style.color = "#005A36";
+                }, 2000);
+            });
+        }
+
+        function copyName() {
+            const nameText = "Akgül Şarküteri Gıda";
+            navigator.clipboard.writeText(nameText).then(() => {
+                const btn = document.getElementById("copyNameBtn");
+                btn.innerHTML = "✔ İsim Kopyalandı!";
+                btn.style.background = "#22c55e";
+                btn.style.borderColor = "#22c55e";
+                
+                setTimeout(() => {
+                    btn.innerHTML = "👤 İsmi Kopyala";
+                    btn.style.background = "rgba(255, 255, 255, 0.15)";
+                    btn.style.borderColor = "rgba(255, 255, 255, 0.2)";
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
 </html>
