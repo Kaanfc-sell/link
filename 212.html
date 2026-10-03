@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niki Aydın - Garanti BBVA Ödeme / IBAN Bilgisi</title>
+    <title>Niki Aydın - Garanti BBVA Ödeme / Payment / الدفع</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -45,11 +45,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
         }
 
         .bank-logo {
-            font-size: 19px;
+            font-size: 18px;
             font-weight: 900;
             letter-spacing: -0.5px;
             color: #ffffff;
@@ -57,25 +57,31 @@
 
         .bank-tag {
             background: rgba(255, 255, 255, 0.15);
-            font-size: 11px;
-            padding: 4px 10px;
-            border-radius: 12px;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 10px;
             font-weight: 600;
             color: #d1fae5;
+            text-align: right;
+            line-height: 1.3;
+        }
+
+        .label-group {
+            margin-bottom: 12px;
         }
 
         .label {
-            font-size: 11px;
+            font-size: 10px;
             color: #a7f3d0;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         .holder-name {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             letter-spacing: 0.3px;
         }
 
@@ -84,20 +90,20 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 12px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .iban-number {
             font-family: monospace, sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             color: #ffffff;
             word-break: break-all;
             text-align: center;
         }
 
-        /* Çift Buton Alanı */
+        /* Çoklu Dil Buton Alanı */
         .actions {
             display: flex;
             flex-direction: column;
@@ -107,16 +113,17 @@
         .btn {
             width: 100%;
             border: none;
-            padding: 13px;
+            padding: 12px;
             border-radius: 12px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
+            text-align: center;
         }
 
         .btn:active {
@@ -132,13 +139,15 @@
             background: rgba(255, 255, 255, 0.15);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 11px;
         }
 
         .footer-note {
             text-align: center;
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 16px;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 14px;
+            line-height: 1.4;
         }
     </style>
 </head>
@@ -147,28 +156,38 @@
     <div class="iban-card">
         <div class="bank-header">
             <div class="bank-logo">Garanti BBVA</div>
-            <div class="bank-tag">Vadesiz Hesap</div>
+            <div class="bank-tag">
+                Vadesiz / Current<br>حساب جاري
+            </div>
         </div>
 
-        <div class="label">Hesap Sahibi</div>
-        <div class="holder-name" id="holderName">Niki Aydın</div>
-
-        <div class="label">IBAN Numarası</div>
-        <div class="iban-box">
-            <div class="iban-number">TR38 0006 2001 6380 0006 2982 05</div>
+        <div class="label-group">
+            <div class="label">Hesap Sahibi / Account Holder / صاحب الحساب</div>
+            <div class="holder-name" id="holderName">Niki Aydın</div>
         </div>
 
-        <!-- Kopyalama Butonları -->
+        <div class="label-group">
+            <div class="label">IBAN Numarası / IBAN Number / رقم الـ IBAN</div>
+            <div class="iban-box">
+                <div class="iban-number">TR38 0006 2001 6380 0006 2982 05</div>
+            </div>
+        </div>
+
+        <!-- Çok Dilli Kopyalama Butonları -->
         <div class="actions">
             <button class="btn btn-iban" id="copyIbanBtn" onclick="copyIban()">
-                📋 IBAN'ı Kopyala
+                📋 IBAN'ı Kopyala / Copy IBAN / نسخ الـ IBAN
             </button>
             <button class="btn btn-name" id="copyNameBtn" onclick="copyName()">
-                👤 İsmi Kopyala
+                👤 İsmi Kopyala / Copy Name / نسخ الاسم
             </button>
         </div>
 
-        <div class="footer-note">Ödeme sonrası dekont iletmeyi unutmayınız.</div>
+        <div class="footer-note">
+            Ödeme sonrası dekont iletmeyi unutmayınız.<br>
+            Please send the receipt after payment.<br>
+            .يرجى إرسال الإيصال بعد الدفع
+        </div>
     </div>
 
     <script>
@@ -176,12 +195,12 @@
             const ibanText = "TR380006200163800006298205"; // Boşluksuz tam IBAN
             navigator.clipboard.writeText(ibanText).then(() => {
                 const btn = document.getElementById("copyIbanBtn");
-                btn.innerHTML = "✔ IBAN Kopyalandı!";
+                btn.innerHTML = "✔ Kopyalandı! / Copied! / تم النسخ!";
                 btn.style.background = "#22c55e";
                 btn.style.color = "#ffffff";
                 
                 setTimeout(() => {
-                    btn.innerHTML = "📋 IBAN'ı Kopyala";
+                    btn.innerHTML = "📋 IBAN'ı Kopyala / Copy IBAN / نسخ الـ IBAN";
                     btn.style.background = "#ffffff";
                     btn.style.color = "#005A36";
                 }, 2000);
@@ -192,12 +211,12 @@
             const nameText = "Niki Aydın";
             navigator.clipboard.writeText(nameText).then(() => {
                 const btn = document.getElementById("copyNameBtn");
-                btn.innerHTML = "✔ İsim Kopyalandı!";
+                btn.innerHTML = "✔ Kopyalandı! / Copied! / تم النسخ!";
                 btn.style.background = "#22c55e";
                 btn.style.borderColor = "#22c55e";
                 
                 setTimeout(() => {
-                    btn.innerHTML = "👤 İsmi Kopyala";
+                    btn.innerHTML = "👤 İsmi Kopyala / Copy Name / نسخ الاسم";
                     btn.style.background = "rgba(255, 255, 255, 0.15)";
                     btn.style.borderColor = "rgba(255, 255, 255, 0.2)";
                 }, 2000);
