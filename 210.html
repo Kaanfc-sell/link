@@ -1,6 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <meta http-equiv="refresh" content="0; url=https://wa.me/905425242477?text=Merhaba">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAYA ÇİÇEK PEYZAJ - İş Bankası Ödeme / Payment / الدفع</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background: #f4f5f7; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .iban-card {
+            background: linear-gradient(135deg, #003399 0%, #001f52 100%);
+            color: #ffffff;
+            width: 100%;
+            max-width: 380px;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: 0 12px 28px rgba(0, 51, 153, 0.35);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* İş Bankası Arka Plan Süsü */
+        .iban-card::after {
+            content: "";
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 50%;
+        }
+
+        .bank-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .bank-logo {
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+        }
+
+        .bank-tag {
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #93c5fd;
+            text-align: right;
+            line-height: 1.3;
+        }
+
+        .label-group {
+            margin-bottom: 12px;
+        }
+
+        .label {
+            font-size: 10px;
+            color: #93c5fd;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        .holder-name {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .iban-box {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .iban-number {
+            font-family: monospace, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: #ffffff;
+            word-break: break-all;
+            text-align: center;
+        }
+
+        /* Çoklu Dil Buton Alanı */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            text-align: center;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-iban {
+            background: #ffffff;
+            color: #003399;
+        }
+
+        .btn-name {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 11px;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 14px;
+            line-height: 1.4;
+        }
+    </style>
 </head>
+<body>
+
+    <div class="iban-card">
+        <div class="bank-header">
+            <div class="bank-logo">İş Bankası</div>
+            <div class="bank-tag">
+                Ticari / Commercial<br>حساب تجاري
+            </div>
+        </div>
+
+        <div class="label-group">
+            <div class="label">Hesap Sahibi / Account Holder / صاحب الحساب</div>
+            <div class="holder-name" id="holderName">MAYA ÇİÇEK PEYZAJ</div>
+        </div>
+
+        <div class="label-group">
+            <div class="label">IBAN Numarası / IBAN Number / رقم الـ IBAN</div>
+            <div class="iban-box">
+                <div class="iban-number">TR82 0006 4000 0011 2760 3444 11</div>
+            </div>
+        </div>
+
+        <!-- Çok Dilli Kopyalama Butonları -->
+        <div class="actions">
+            <button class="btn btn-iban" id="copyIbanBtn" onclick="copyIban()">
+                📋 IBAN'ı Kopyala / Copy IBAN / نسخ الـ IBAN
+            </button>
+            <button class="btn btn-name" id="copyNameBtn" onclick="copyName()">
+                👤 İsmi Kopyala / Copy Name / نسخ الاسم
+            </button>
+        </div>
+
+        <div class="footer-note">
+            Ödeme sonrası dekont iletmeyi unutmayınız.<br>
+            Please send the receipt after payment.<br>
+            .يرجى إرسال الإيصال بعد الدفع
+        </div>
+    </div>
+
+    <script>
+        function copyIban() {
+            const ibanText = "TR820006400000112760344411"; // Boşluksuz tam IBAN
+            navigator.clipboard.writeText(ibanText).then(() => {
+                const btn = document.getElementById("copyIbanBtn");
+                btn.innerHTML = "✔ Kopyalandı! / Copied! / تم النسخ!";
+                btn.style.background = "#22c55e";
+                btn.style.color = "#ffffff";
+                
+                setTimeout(() => {
+                    btn.innerHTML = "📋 IBAN'ı Kopyala / Copy IBAN / نسخ الـ IBAN";
+                    btn.style.background = "#ffffff";
+                    btn.style.color = "#003399";
+                }, 2000);
+            });
+        }
+
+        function copyName() {
+            const nameText = "MAYA ÇİÇEK PEYZAJ";
+            navigator.clipboard.writeText(nameText).then(() => {
+                const btn = document.getElementById("copyNameBtn");
+                btn.innerHTML = "✔ Kopyalandı! / Copied! / تم النسخ!";
+                btn.style.background = "#22c55e";
+                btn.style.borderColor = "#22c55e";
+                
+                setTimeout(() => {
+                    btn.innerHTML = "👤 İsmi Kopyala / Copy Name / نسخ الاسم";
+                    btn.style.background = "rgba(255, 255, 255, 0.15)";
+                    btn.style.borderColor = "rgba(255, 255, 255, 0.2)";
+                }, 2000);
+            });
+        }
+    </script>
+
+</body>
 </html>
