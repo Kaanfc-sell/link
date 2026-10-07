@@ -3,14 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DENİZKENT GAYRİMENKUL - sahibinden.com İlanımız</title>
-    <!-- 2 Saniye Sonra Otomatik Yönlendirme (Yedek) -->
-    <meta http-equiv="refresh" content="2;url=https://shbd.io/s/FVrVDrla">
+    <title>AVERA GAYRİMENKUL - Sahibinden Mağazası</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            background: #181818; 
+            background: #111111; 
             color: #ffffff;
             display: flex; 
             justify-content: center; 
@@ -19,139 +17,80 @@
             padding: 16px;
         }
 
-        .shbd-card {
-            background: #242424;
+        .container {
             width: 100%;
             max-width: 380px;
+            background: #1e1e1e;
             border-radius: 20px;
-            padding: 30px 24px;
+            padding: 28px 20px;
             text-align: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 208, 0, 0.2);
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Sahibinden Sarı Detay Çizgisi */
-        .shbd-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 6px;
-            background: #FFC400;
-        }
-
-        /* Mavi Yazıyla Firma İsmi */
-        .brand-title {
-            font-size: 20px;
+        .brand-logo {
+            background: #ffe800;
+            color: #000000;
+            font-size: 18px;
             font-weight: 900;
-            color: #2563eb; /* Şık Mavi */
-            letter-spacing: 1px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .shbd-badge {
+            padding: 10px 18px;
+            border-radius: 12px;
             display: inline-block;
-            background: #FFC400;
-            color: #111111;
-            font-size: 16px;
-            font-weight: 900;
-            padding: 5px 14px;
-            border-radius: 8px;
-            letter-spacing: -0.3px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
         }
 
         .title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #ffffff;
+            font-size: 20px;
+            font-weight: 800;
             margin-bottom: 6px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
         }
 
         .subtitle {
-            font-size: 13px;
+            font-size: 12px;
             color: #aaaaaa;
             margin-bottom: 24px;
             line-height: 1.4;
         }
 
-        .btn-shbd {
+        .btn-sahibinden {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             width: 100%;
-            background: #FFC400;
-            color: #111111;
-            text-decoration: none;
             padding: 16px;
+            background: #ffe800;
+            color: #000000;
             border-radius: 14px;
             font-size: 15px;
             font-weight: 800;
+            text-decoration: none;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(255, 196, 0, 0.25);
+            box-shadow: 0 6px 20px rgba(255, 232, 0, 0.2);
         }
 
-        .btn-shbd:active {
+        .btn-sahibinden:active {
             transform: scale(0.98);
-            background: #e6b000;
         }
 
-        .loader-box {
+        .footer {
             margin-top: 20px;
-            font-size: 12px;
-            color: #888888;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background: #FFC400;
-            border-radius: 50%;
-            animation: pulse 1s infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(0.8); }
-            100% { opacity: 1; transform: scale(1.2); }
+            font-size: 11px;
+            color: #666666;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
 
-    <div class="shbd-card">
-        <!-- Mavi Yazıyla Gayrimenkul / Firma İsmi -->
-        <div class="brand-title">DENİZKENT GAYRİMENKUL</div>
-
-        <div class="shbd-badge">sahibinden.com</div>
+    <div class="container">
+        <div class="brand-logo">sahibinden.com</div>
         
-        <div class="title">Resmi Mağaza İlanımız</div>
-        <div class="subtitle">İlanı ve tüm detayları sahibinden.com üzerinden inceleyebilirsiniz.</div>
+        <div class="title">AVERA GAYRİMENKUL</div>
+        <div class="subtitle">Kurumsal İlan Mağazamıza Hoş Geldiniz<br>Welcome to Our Store</div>
 
-        <a href="https://shbd.io/s/FVrVDrla" class="btn-shbd" id="shbdLink">
-            💛 sahibinden.com'da Görüntüle
-        </a>
-
-        <div class="loader-box">
-            <div class="dot"></div>
-            <span>Otomatik yönlendiriliyorsunuz...</span>
-        </div>
-    </div>
-
-    <script>
-        // Sayfa açıldıktan 1.5 saniye sonra otomatik git
-        setTimeout(function() {
-            window.location.href = "https://shbd.io/s/FVrVDrla";
-        }, 1500);
-    </script>
-
-</body>
-</html>
+        <!-- Tıklandığında telefonun Sahibinden uygulamasını tetikler -->
+        <a href="https://shbd.io/s/fI2U9mVW" class="btn-sah
