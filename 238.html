@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEMT EMLAK - sahibinden.com İlanımız</title>
+    <title>İSTANBUL KARAVANYA - sahibinden.com İlanımız</title>
     <style>
         * {
             box-sizing: border-box;
@@ -29,19 +29,25 @@
             text-align: center;
             border: 1px solid #333333;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: #FFC400;
         }
         .brand-name {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 900;
+            color: #FFC400; /* Şık Sarı */
             margin-bottom: 12px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-        }
-        .brand-blue {
-            color: #2563eb; /* Şık Mavi */
-        }
-        .brand-red {
-            color: #ef4444; /* Canlı Kırmızı */
         }
         .badge {
             display: inline-block;
@@ -84,9 +90,7 @@
 <body>
 
     <div class="card">
-        <div class="brand-name">
-            <span class="brand-blue">SEMT</span> <span class="brand-red">EMLAK</span>
-        </div>
+        <div class="brand-name">İSTANBUL KARAVANYA</div>
 
         <div class="badge">sahibinden.com</div>
 
@@ -94,7 +98,7 @@
             İlanı ve tüm detayları sahibinden.com üzerinden incelemek için aşağıdaki butona tıklayın.
         </div>
 
-        <a href="https://shbd.io/s/CUybDugX" class="btn-link">
+        <a href="https://shbd.io/s/5f2AIx4w" class="btn-link">
             💛 sahibinden.com'da Görüntüle
         </a>
 
