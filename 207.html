@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAAN TURGUT - Enpara Ödeme</title>
+    <title>SEMİ BATUHAN ULUDOĞAN - Garanti BBVA Ödeme</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -17,13 +17,13 @@
         }
 
         .iban-card {
-            background: linear-gradient(135deg, #f97316 0%, #c2410c 100%);
+            background: linear-gradient(135deg, #15803d 0%, #052e16 100%);
             color: #ffffff;
             width: 100%;
             max-width: 380px;
             border-radius: 20px;
             padding: 24px 20px;
-            box-shadow: 0 12px 28px rgba(249, 115, 22, 0.35);
+            box-shadow: 0 12px 28px rgba(21, 128, 61, 0.35);
             position: relative;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -60,7 +60,7 @@
             padding: 4px 8px;
             border-radius: 10px;
             font-weight: 600;
-            color: #ffedd5;
+            color: #bbf7d0;
             text-align: right;
             line-height: 1.3;
         }
@@ -71,7 +71,7 @@
 
         .label {
             font-size: 9.5px;
-            color: #ffedd5;
+            color: #bbf7d0;
             text-transform: uppercase;
             letter-spacing: 0.4px;
             line-height: 1.3;
@@ -85,7 +85,7 @@
         }
 
         .iban-box {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 12px;
             border-radius: 12px;
@@ -131,7 +131,7 @@
 
         .btn-iban {
             background: #ffffff;
-            color: #ea580c;
+            color: #15803d;
         }
 
         .btn-name {
@@ -154,7 +154,7 @@
 
     <div class="iban-card">
         <div class="bank-header">
-            <div class="bank-logo">Enpara.com</div>
+            <div class="bank-logo">Garanti BBVA</div>
             <div class="bank-tag">
                 Bireysel / Personal<br>حساب شخصي / حساب شخصی
             </div>
@@ -162,13 +162,13 @@
 
         <div class="label-group">
             <div class="label">Hesap Sahibi / Account Holder / صاحب الحساب / صاحب حساب</div>
-            <div class="holder-name" id="holderName">KAAN TURGUT</div>
+            <div class="holder-name" id="holderName">SEMİ BATUHAN ULUDOĞAN</div>
         </div>
 
         <div class="label-group">
             <div class="label">IBAN Numarası / IBAN Number / رقم الـ IBAN / شماره شبا</div>
             <div class="iban-box">
-                <div class="iban-number">TR12 0015 7000 0000 0139 9940 85</div>
+                <div class="iban-number">TR93 0006 2000 6300 0006 6408 82</div>
             </div>
         </div>
 
@@ -191,7 +191,7 @@
 
     <script>
         function copyIban() {
-            const ibanText = "TR120015700000000139994085";
+            const ibanText = "TR930006200063000006640882";
             navigator.clipboard.writeText(ibanText).then(() => {
                 const btn = document.getElementById("copyIbanBtn");
                 btn.innerHTML = "✔ Kopyalandı! / Copied!<br>تم النسخ! / کپی شد!";
@@ -201,13 +201,13 @@
                 setTimeout(() => {
                     btn.innerHTML = "📋 IBAN Kopyala / Copy IBAN<br>نسخ الـ IBAN / کپی شماره شبا";
                     btn.style.background = "#ffffff";
-                    btn.style.color = "#ea580c";
+                    btn.style.color = "#15803d";
                 }, 2000);
             });
         }
 
         function copyName() {
-            const nameText = "KAAN TURGUT";
+            const nameText = "SEMİ BATUHAN ULUDOĞAN";
             navigator.clipboard.writeText(nameText).then(() => {
                 const btn = document.getElementById("copyNameBtn");
                 btn.innerHTML = "✔ Kopyalandı! / Copied!<br>تم النسخ! / کپی شد!";
