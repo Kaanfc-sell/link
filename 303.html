@@ -46,19 +46,28 @@
         .subtitle {
             color: #666;
             font-size: 14px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
-        .iban-box {
+        .info-box {
             background: #f8f9fa;
             border: 2px dashed #006633;
-            padding: 16px 12px;
+            padding: 12px 14px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+        .info-label {
+            font-size: 11px;
+            color: #666;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .info-value {
             font-family: monospace;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #1a1a1a;
-            letter-spacing: 0.8px;
             word-break: break-all;
         }
         .btn {
@@ -66,20 +75,21 @@
             color: white;
             border: none;
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             border-radius: 14px;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 4px 14px rgba(0,102,51,0.25);
+            margin-top: 6px;
         }
         .btn:active {
             transform: scale(0.98);
             background: #004d26;
         }
         .toast {
-            margin-top: 14px;
+            margin-top: 12px;
             font-size: 14px;
             color: #006633;
             font-weight: 600;
@@ -88,7 +98,7 @@
             height: 18px;
         }
         .footer {
-            margin-top: 24px;
+            margin-top: 20px;
             font-size: 12px;
             color: #888;
             line-height: 1.4;
@@ -102,27 +112,33 @@
         <h2>MEHMET POYRAZ</h2>
         <div class="subtitle">FAST Ödeme Paneli</div>
 
-        <div class="iban-box" id="ibanText">TR48 0020 5000 0005 6421 5000 05</div>
+        <div class="info-box">
+            <div class="info-label">Alıcı Adı</div>
+            <div class="info-value">MEHMET POYRAZ</div>
+        </div>
 
-        <button class="btn" onclick="copyIban()">IBAN'ı Kopyala</button>
-        <div class="toast" id="toastMessage">✓ IBAN panoya kopyalandı!</div>
+        <div class="info-box">
+            <div class="info-label">IBAN Numarası</div>
+            <div class="info-value">TR48 0020 5000 0005 6421 5000 05</div>
+        </div>
+
+        <button class="btn" onclick="copyAll()">İsim ve IBAN'ı Kopyala</button>
+        <div class="toast" id="toastMessage">✓ Bilgiler panoya kopyalandı!</div>
 
         <div class="footer">
-            Kopyaladıktan sonra banka uygulamanızı açıp FAST adımına yapıştırarak ödemeyi tamamlayabilirsiniz.
+            Butona basarak bilgileri kopyalayın, banka uygulamanıza yapıştırın.
         </div>
     </div>
 
     <script>
-        function copyIban() {
-            const iban = "TR480020500000056421500005";
+        function copyAll() {
+            const textToCopy = "Alıcı: MEHMET POYRAZ\nIBAN: TR480020500000056421500005";
             
-            // Modern cihazlar için Clipboard API
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(iban).then(showToast);
+                navigator.clipboard.writeText(textToCopy).then(showToast);
             } else {
-                // Eski cihaz ve tarayıcılar için yedek yöntem
                 const textArea = document.createElement("textarea");
-                textArea.value = iban;
+                textArea.value = textToCopy;
                 textArea.style.position = "fixed";
                 textArea.style.left = "-999999px";
                 document.body.appendChild(textArea);
