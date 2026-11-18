@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ziraat Bankası - Hızlı Ödeme Paneli</title>
+    <title>Meryem Yılmaz - Hızlı Ödeme</title>
     <style>
         * {
             box-sizing: border-box;
@@ -23,11 +23,10 @@
             padding: 26px 20px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            max-width: 390px;
+            max-width: 370px;
             width: 92%;
             text-align: center;
         }
-        /* Dil Seçici Sekmeleri */
         .lang-selector {
             display: flex;
             justify-content: center;
@@ -61,46 +60,34 @@
             margin-bottom: 10px;
             letter-spacing: 0.5px;
         }
+        h2 {
+            margin: 0 0 4px;
+            color: #1a1a1a;
+            font-size: 20px;
+            line-height: 1.3;
+        }
         .subtitle {
             color: #666;
             font-size: 13px;
-            margin-bottom: 16px;
-        }
-        /* Hesap Bölücü Kutular */
-        .account-section {
-            background: #fafbfc;
-            border: 1px solid #e1e4e8;
-            border-radius: 14px;
-            padding: 14px;
-            margin-bottom: 16px;
-            text-align: left;
-        }
-        .account-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: #1a1a1a;
-            margin-bottom: 10px;
-            text-align: center;
-            background: #e9ecef;
-            padding: 6px;
-            border-radius: 8px;
+            margin-bottom: 18px;
         }
         .section-label {
-            font-size: 10px;
+            font-size: 11px;
             color: #666;
             font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            text-align: start;
+            margin-bottom: 5px;
             letter-spacing: 0.5px;
         }
         .box {
-            background: #ffffff;
+            background: #f8f9fa;
             border: 2px dashed #c51c1c;
-            padding: 9px;
-            border-radius: 10px;
-            margin-bottom: 8px;
+            padding: 11px;
+            border-radius: 12px;
+            margin-bottom: 10px;
             font-family: monospace;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 700;
             color: #1a1a1a;
             word-break: break-all;
@@ -109,23 +96,23 @@
         }
         .solid-box {
             border-style: solid;
-            border-color: #d1d5db;
+            border-color: #e1e4e8;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 13px;
+            font-size: 14px;
         }
         .btn {
             background: #c51c1c;
             color: white;
             border: none;
             width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 13px;
+            padding: 13px;
+            border-radius: 12px;
+            font-size: 14px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 3px 8px rgba(197,28,28,0.2);
-            margin-bottom: 6px;
+            box-shadow: 0 4px 12px rgba(197,28,28,0.2);
+            margin-bottom: 14px;
         }
         .btn:active {
             transform: scale(0.98);
@@ -133,7 +120,7 @@
         }
         .btn-secondary {
             background: #2b2d42;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             margin-bottom: 0;
         }
         .btn-secondary:active {
@@ -146,9 +133,11 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             height: 18px;
-            margin-bottom: 8px;
+            margin-top: 6px;
+            margin-bottom: 10px;
         }
         .footer {
+            margin-top: 2px;
             font-size: 11px;
             color: #888;
             line-height: 1.4;
@@ -166,39 +155,24 @@
         </div>
 
         <div class="bank-badge">ZİRAAT BANKASI</div>
-        <div class="subtitle" id="txtSubtitle">Hızlı Ödeme Paneli</div>
+        <h2>MERYEM YILMAZ</h2>
+        <div class="subtitle" id="txtSubtitle">FAST Ödeme Paneli</div>
+
+        <!-- IBAN KISMI -->
+        <div class="section-label" id="txtIbanLabel">IBAN Numarası</div>
+        <div class="box">TR95 0001 0090 1085 4133 1050 01</div>
+        <button class="btn" id="btnIban" onclick="copyText('TR950001009010854133105001', translations[currentLang].toastIban)">IBAN'ı Kopyala</button>
+
+        <!-- İSİM KISMI -->
+        <div class="section-label" id="txtNameLabel">Alıcı Adı Soyadı</div>
+        <div class="box solid-box">MERYEM YILMAZ</div>
+        <button class="btn btn-secondary" id="btnName" onclick="copyText('MERYEM YILMAZ', translations[currentLang].toastName)">İsmi Kopyala</button>
 
         <!-- BİLDİRİM ALANI -->
         <div class="toast" id="toastMessage">✓ Kopyalandı!</div>
 
-        <!-- 1. HESAP: MERYEM YILMAZ -->
-        <div class="account-section">
-            <div class="account-title">MERYEM YILMAZ</div>
-            
-            <div class="section-label" class="txtIbanLabel">IBAN Numarası</div>
-            <div class="box">TR95 0001 0090 1085 4133 1050 01</div>
-            <button class="btn" onclick="copyText('TR950001009010854133105001', translations[currentLang].toastIban)">IBAN'ı Kopyala</button>
-
-            <div class="section-label" style="margin-top: 8px;">Alıcı Adı</div>
-            <div class="box solid-box">MERYEM YILMAZ</div>
-            <button class="btn btn-secondary" onclick="copyText('MERYEM YILMAZ', translations[currentLang].toastName)">İsmi Kopyala</button>
-        </div>
-
-        <!-- 2. HESAP: TANER YILMAZ -->
-        <div class="account-section">
-            <div class="account-title">TANER YILMAZ</div>
-            
-            <div class="section-label">IBAN Numarası</div>
-            <div class="box">TR34 0001 0013 5982 4847 4150 04</div>
-            <button class="btn" onclick="copyText('TR340001001359824847415004', translations[currentLang].toastIban)">IBAN'ı Kopyala</button>
-
-            <div class="section-label" style="margin-top: 8px;">Alıcı Adı</div>
-            <div class="box solid-box">TANER YILMAZ</div>
-            <button class="btn btn-secondary" onclick="copyText('TANER YILMAZ', translations[currentLang].toastName)">İsmi Kopyala</button>
-        </div>
-
         <div class="footer" id="txtFooter">
-            İstediğiniz hesabın IBAN ve ismini tek tıkla kopyalayabilirsiniz.
+            Önce IBAN'ı, ardından ismi kopyalayarak banka uygulamanıza yapıştırabilirsiniz.
         </div>
     </div>
 
@@ -207,20 +181,32 @@
 
         const translations = {
             tr: {
-                subtitle: "Hızlı Ödeme Paneli",
-                footer: "İstediğiniz hesabın IBAN ve ismini tek tıkla kopyalayabilirsiniz.",
+                subtitle: "FAST Ödeme Paneli",
+                ibanLabel: "IBAN Numarası",
+                nameLabel: "Alıcı Adı Soyadı",
+                btnIban: "IBAN'ı Kopyala",
+                btnName: "İsmi Kopyala",
+                footer: "Önce IBAN'ı, ardından ismi kopyalayarak banka uygulamanıza yapıştırabilirsiniz.",
                 toastIban: "IBAN panoya kopyalandı!",
                 toastName: "Alıcı adı panoya kopyalandı!"
             },
             en: {
-                subtitle: "Fast Payment Panel",
-                footer: "You can copy the IBAN and name of the desired account with one click.",
+                subtitle: "FAST Payment Panel",
+                ibanLabel: "IBAN Number",
+                nameLabel: "Account Holder Name",
+                btnIban: "Copy IBAN",
+                btnName: "Copy Name",
+                footer: "Copy the IBAN first, then the name, and paste them into your banking app.",
                 toastIban: "IBAN copied to clipboard!",
                 toastName: "Account name copied to clipboard!"
             },
             ar: {
                 subtitle: "لوحة الدفع السريع",
-                footer: "يمكنك نسخ الآيبان والاسم للحساب المطلوب بنقرة واحدة.",
+                ibanLabel: "رقم الآيبان (IBAN)",
+                nameLabel: "اسم المستفيد",
+                btnIban: "نسخ الآيبان",
+                btnName: "نسخ الاسم",
+                footer: "قم بنسخ الآيبان أولاً ثم الاسم، والصقهما في تطبيقك المصرفي.",
                 toastIban: "تم نسخ الآيبان!",
                 toastName: "تم نسخ اسم المستفيد!"
             }
@@ -233,6 +219,10 @@
             el.classList.add('active');
 
             document.getElementById('txtSubtitle').innerText = translations[lang].subtitle;
+            document.getElementById('txtIbanLabel').innerText = translations[lang].ibanLabel;
+            document.getElementById('txtNameLabel').innerText = translations[lang].nameLabel;
+            document.getElementById('btnIban').innerText = translations[lang].btnIban;
+            document.getElementById('btnName').innerText = translations[lang].btnName;
             document.getElementById('txtFooter').innerText = translations[lang].footer;
             
             document.getElementById('mainCard').style.direction = (lang === 'ar') ? 'rtl' : 'ltr';
