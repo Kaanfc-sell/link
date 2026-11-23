@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaan Turgut - Hızlı Ödeme</title>
+    <title>Merve Daşdemir - Hızlı Ödeme</title>
     <style>
         * {
             box-sizing: border-box;
@@ -47,14 +47,14 @@
             transition: all 0.2s ease;
         }
         .lang-btn.active {
-            background: #5b2c6f;
+            background: #003366;
             color: white;
         }
         .bank-badge {
             font-size: 13px;
             font-weight: 700;
-            color: #5b2c6f;
-            background: #f3e8f8;
+            color: #003366;
+            background: #e6eef7;
             display: inline-block;
             padding: 6px 14px;
             border-radius: 20px;
@@ -83,7 +83,7 @@
         }
         .box {
             background: #f8f9fa;
-            border: 2px dashed #5b2c6f;
+            border: 2px dashed #003366;
             padding: 11px;
             border-radius: 12px;
             margin-bottom: 10px;
@@ -102,7 +102,7 @@
             font-size: 14px;
         }
         .btn {
-            background: #5b2c6f;
+            background: #003366;
             color: white;
             border: none;
             width: 100%;
@@ -112,12 +112,12 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(91,44,111,0.2);
+            box-shadow: 0 4px 12px rgba(0,51,102,0.2);
             margin-bottom: 14px;
         }
         .btn:active {
             transform: scale(0.98);
-            background: #431e52;
+            background: #002244;
         }
         .btn-secondary {
             background: #2b2d42;
@@ -129,7 +129,7 @@
         }
         .toast {
             font-size: 13px;
-            color: #5b2c6f;
+            color: #003366;
             font-weight: 700;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -155,19 +155,19 @@
             <button class="lang-btn" onclick="setLanguage('ar', this)">العربية</button>
         </div>
 
-        <div class="bank-badge">ENPARA</div>
-        <h2>KAAN TURGUT</h2>
+        <div class="bank-badge">İŞ BANKASI</div>
+        <h2>MERVE DAŞDEMİR</h2>
         <div class="subtitle" id="txtSubtitle">FAST Ödeme Paneli</div>
 
         <!-- IBAN KISMI -->
         <div class="section-label" id="txtIbanLabel">IBAN Numarası</div>
-        <div class="box">TR12 0015 7000 0000 0139 9940 85</div>
-        <button class="btn" id="btnIban" onclick="copyText('TR120015700000000139994085', translations[currentLang].toastIban)">IBAN'ı Kopyala</button>
+        <div class="box">TR23 0006 4000 0011 4790 2020 05</div>
+        <button class="btn" id="btnIban" onclick="copyText('TR230006400000114790202005', translations[currentLang].toastIban)">IBAN'ı Kopyala</button>
 
         <!-- İSİM KISMI -->
         <div class="section-label" id="txtNameLabel">Alıcı Adı Soyadı</div>
-        <div class="box solid-box">KAAN TURGUT</div>
-        <button class="btn btn-secondary" id="btnName" onclick="copyText('KAAN TURGUT', translations[currentLang].toastName)">İsmi Kopyala</button>
+        <div class="box solid-box">MERVE DAŞDEMİR</div>
+        <button class="btn btn-secondary" id="btnName" onclick="copyText('MERVE DAŞDEMİR', translations[currentLang].toastName)">İsmi Kopyala</button>
 
         <!-- BİLDİRİM ALANI -->
         <div class="toast" id="toastMessage">✓ Kopyalandı!</div>
